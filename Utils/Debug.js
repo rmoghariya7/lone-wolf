@@ -4,10 +4,9 @@ import dat from "dat.gui";
 
 export default class Debug {
   constructor() {
-    this.active = window.location.pathname === "/debug";
+    this.active = true;
 
     if (this.active) {
-      document.querySelector("a").style.display = "none";
       this.ui = new dat.GUI();
     }
   }
