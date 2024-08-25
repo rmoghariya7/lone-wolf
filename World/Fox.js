@@ -46,7 +46,7 @@ export default class Fox {
     this.animation.action.running = this.animation.mixer.clipAction(
       this.resource.animations[2]
     );
-    this.animation.action.current = this.animation.action.walking;
+    this.animation.action.current = this.animation.action.idle;
     this.animation.action.current.play();
 
     this.animation.play = (name) => {
