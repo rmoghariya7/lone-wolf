@@ -1,6 +1,5 @@
-import Experience from "../experience/Experience";
 import * as THREE from "three";
-
+import Experience from "../experience/Experience";
 export default class Floor {
   constructor() {
     this.experience = new Experience();
@@ -9,7 +8,7 @@ export default class Floor {
 
     this.setGeometry();
     this.setTextures();
-    this.setMaterials();
+    this.setMaterial();
     this.setMesh();
   }
 
@@ -19,7 +18,9 @@ export default class Floor {
 
   setTextures() {
     this.textures = {};
+
     this.textures.color = this.resources.items.grassColorTexture;
+    this.textures.color.encoding = THREE.sRGBEncoding;
     this.textures.color.repeat.set(1.5, 1.5);
     this.textures.color.wrapS = THREE.RepeatWrapping;
     this.textures.color.wrapT = THREE.RepeatWrapping;
@@ -30,11 +31,10 @@ export default class Floor {
     this.textures.normal.wrapT = THREE.RepeatWrapping;
   }
 
-  setMaterials() {
+  setMaterial() {
     this.material = new THREE.MeshStandardMaterial({
       map: this.textures.color,
       normalMap: this.textures.normal,
-      //   normalScale: new THREE.Vector2(1, 1),
     });
   }
 

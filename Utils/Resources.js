@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { GLTFLoader } from "three/examples/jsm/Addons.js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import EventEmitter from "./EventEmmiter";
 
 export default class Resources extends EventEmitter {
@@ -7,6 +7,7 @@ export default class Resources extends EventEmitter {
     super();
 
     this.sources = sources;
+
     this.items = {};
     this.toLoad = this.sources.length;
     this.loaded = 0;
@@ -23,6 +24,7 @@ export default class Resources extends EventEmitter {
   }
 
   startLoading() {
+    // Load each source
     for (const source of this.sources) {
       if (source.type === "gltfModel") {
         this.loaders.gltfLoader.load(source.path, (file) => {
@@ -42,6 +44,7 @@ export default class Resources extends EventEmitter {
 
   sourceLoaded(source, file) {
     this.items[source.name] = file;
+
     this.loaded++;
 
     if (this.loaded === this.toLoad) {
