@@ -7,3 +7,8 @@
 body {
   overflow: hidden;
 }
+
+.debug-link {
+  position: absolute;
+  background-color: white;
+}
